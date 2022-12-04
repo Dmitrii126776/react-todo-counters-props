@@ -2,7 +2,7 @@ import React from 'react';
 
 const ListItems = (props) => {
     const minus = (id) => {
-        props.setCounters(props.list.map(el => el.id === id ? {...el, value: el.value - 1} : el))
+        props.setCounters(props.list.map(el => el.id === id ? {...el, value: el.value > 0 ? el.value - 1 : 0} : el))
     }
     const plus = (id) => {
         props.setCounters(props.list.map(el => el.id === id ? {...el, value: el.value + 1} : el))

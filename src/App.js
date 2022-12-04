@@ -10,10 +10,14 @@ function App() {
     const [counters, setCounters] = useState([
         {id: uuidv4(), name: 'banana', value: 22}
     ])
+    const addCounter = (inputName, inputNumber) => {
+        setCounters([...counters, {id: uuidv4(), name: inputName, value: Number(inputNumber) || 0}])
+    }
+
     return (
         <div className="App">
             <Header header={header}/>
-            <InputItems list={counters} setCounters={setCounters}/>
+            <InputItems addCounter={addCounter}/>
             <ListItems list={counters} setCounters={setCounters}/>
         </div>
     );

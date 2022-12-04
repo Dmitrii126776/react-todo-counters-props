@@ -1,13 +1,11 @@
 import React, {useState} from 'react';
-import {v4 as uuidv4} from 'uuid';
 
 const InputItems = (props) => {
     const [inputName, setInputName] = useState('')
     const [inputNumber, setInputNumber] = useState('')
 
-    const addCounter = () => {
-        const newCounter = {id: uuidv4(), name: inputName, value: Number(inputNumber) || 0}
-        props.setCounters([...props.list, newCounter])
+    const addNewCounter = () => {
+        props.addCounter(inputName, inputNumber)
         setInputName('')
         setInputNumber('')
     }
@@ -24,7 +22,7 @@ const InputItems = (props) => {
                    value={inputNumber}
                    onChange={(e) => setInputNumber(e.target.value)}
             />
-            <button onClick={addCounter}>Add Counter</button>
+            <button disabled={inputName === ''} onClick={addNewCounter}>Add Counter</button>
         </div>
     );
 };
